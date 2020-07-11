@@ -1,0 +1,17 @@
+version: '3.3'
+
+services:
+  sharee-website:
+    build: .
+    image: sharee-website:dev
+    command: npm run start
+    container_name: sharee-website
+    environment:
+      PORT: 3000
+      REACT_APP_API_PORT: 2304
+      REACT_APP_API_HOST: http://localhost
+    volumes:
+      - "./src/:/sharee-website/src/"
+      - "./public/:/sharee-website/public/"
+    ports:
+      - 3000:3000
